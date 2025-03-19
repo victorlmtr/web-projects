@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitch Chat Overlay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+/* General Styling */
+body {
+    width: 500px;
+    height: 600px;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Barlow', sans-serif;
+    background-color: transparent; /* Main background color */
+    color: #fff; /* Default text color */
+}
+
+/* Chat Container */
+.chat-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #f9aac5 #ffe3ed; /* Custom scrollbar */
+}
+
+/* Scrollbar Styling */
+.chat-container::-webkit-scrollbar {
+    width: 8px;
+}
+.chat-container::-webkit-scrollbar-track {
+    background: #ffe3ed;
+}
+.chat-container::-webkit-scrollbar-thumb {
+    background-color: #f9aac5;
+    border-radius: 10px;
+    border: 2px solid #ffe3ed;
+}
+
+/* Message Styling */
+.chat-message {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #ffe3ed;
+    padding: 10px;
+    border-radius: 12px;
+    color: #4a4a4a;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+/* User Name Styling */
+.chat-message .username {
+    font-weight: bold;
+    color: #78e1eb;
+}
+
+/* Message Text Styling */
+.chat-message .message-text {
+    flex: 1;
+    color: #4a4a4a;
+}
+
+/* New Message Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Highlighted Message Styling */
+.chat-message.highlight {
+    background-color: #fcf9a8;
+    border: 2px solid #78e1eb;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(120, 225, 235, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(120, 225, 235, 0.8);
+    }
+}
+
+/* Mentioned Message Styling */
+.chat-message.mentioned {
+    background-color: #f9aac5;
+    color: #fff;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    <div class="chat-container" id="chat-container">
+        <!-- Example chat messages -->
+        <div class="chat-message">
+            <span class="username">User1:</span>
+            <span class="message-text">Hello, world!</span>
+        </div>
+        <div class="chat-message highlight">
+            <span class="username">Streamer:</span>
+            <span class="message-text">Welcome to the stream!</span>
+        </div>
+        <div class="chat-message mentioned">
+            <span class="username">User2:</span>
+            <span class="message-text">@Streamer, love the setup!</span>
+        </div>
+    </div>
+</body>
+</html>
